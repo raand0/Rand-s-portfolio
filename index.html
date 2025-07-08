@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rand Jamal</title>
+  <title>Rand</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
@@ -34,6 +34,47 @@
       overflow-x: hidden;
     }
 
+    /* Button */
+    .header-btn {
+      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .header-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .header-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .header-btn:hover::before {
+      left: 100%;
+    }
+
+    .header-btn:active {
+      transform: translateY(0);
+    }
     /* Navbar */
     .navbar {
       background: rgba(26, 31, 46, 0.95);
@@ -351,18 +392,23 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Rand Jamal</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="#" id="lg-name">Rand Jamal</a>
+      <button class="navbar-toggler" style="background-color: var(--accent-blue);" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#hero" id="h">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about" id="a">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects" id="p">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience" id="e">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" id="c">Contact</a></li>
         </ul>
+        <div class="ms-3">
+          <button class="header-btn" id="lang-btn">
+            EN
+          </button>
+        </div>
       </div>
     </div>
   </nav>
@@ -371,13 +417,12 @@
   <section id="hero" class="section">
     <div class="container">
       <div class="hero-content text-center">
-        <h1 class="hero-title fade-in">Hey, I'm Rand Jamal</h1>
-        <p class="hero-subtitle fade-in">Backend Developer & IT Student at Sulaimani Polytechnic University</p>
+        <h1 class="hero-title fade-in" id="title-Text">Hey, I'm Rand Jamal</h1>
+        <p class="hero-subtitle fade-in" id="title-info">Backend Developer & IT Student at Sulaimani Polytechnic University</p>
         <div class="mt-4">
-          <span class="tech-badge">Backend Development</span>
-          <span class="tech-badge">System Architecture</span>
-          <span class="tech-badge">Security</span>
-          <span class="tech-badge">Problem Solving</span>
+          <span class="tech-badge" id="bed">Backend Development</span>
+          <span class="tech-badge" id="s">Security</span>
+          <span class="tech-badge" id="ps">Problem Solving</span>
         </div>
       </div>
     </div>
@@ -386,11 +431,11 @@
   <!-- About Section -->
   <section id="about" class="section">
     <div class="container">
-      <h2 class="section-title">About Me</h2>
+      <h2 class="section-title" id="aboutme">About Me</h2>
       <div class="about-text">
-        <p>I'm a 20-year-old Information Technology student at Sulaimani Polytechnic University with a deep passion for technology and problem-solving. My primary interest lies in backend development, where I focus on building the logic, structure, and functionality behind applications, websites, tools, and systems.</p>
-        <p>I enjoy understanding how things work under the hood and take pride in writing clean, efficient, and secure backend code. While I have a working knowledge of front-end development and design, my strengths are in backend logic and systems architecture. I prioritize implementing reliable functionality and robust security in everything I build.</p>
-        <p>I'm also highly adaptable and a fast learner — if there's something I don't know yet, I'm confident in my ability to pick it up quickly and apply it effectively.</p>
+        <p id="abt1">I'm a 20-year-old Information Technology student at Sulaimani Polytechnic University with a deep passion for technology and problem-solving. My primary interest lies in backend development, where I focus on building the logic, structure, and functionality behind applications, websites, tools, and systems.</p>
+        <p id="abt2">I enjoy understanding how things work under the hood and take pride in writing clean, efficient, and secure backend code. While I have a working knowledge of front-end development and design, my strengths are in backend logic and systems architecture. I prioritize implementing reliable functionality and robust security in everything I build.</p>
+        <p id="abt3">I'm also highly adaptable and a fast learner — if there's something I don't know yet, I'm confident in my ability to pick it up quickly and apply it effectively.</p>
       </div>
     </div>
   </section>
@@ -398,23 +443,23 @@
   <!-- Projects Section -->
   <section id="projects" class="section">
     <div class="container">
-      <h2 class="section-title">Projects</h2>
+      <h2 class="section-title" id="projectss">Projects</h2>
       <div class="row">
         <div class="col-md-6 mb-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">🚀 GitHub Portfolio</h5>
-              <p class="card-text">Explore my coding projects and contributions on GitHub. See my latest work in backend development, automation, and system tools.</p>
-              <a class="custom-link" href="https://github.com/raand0" target="_blank">View GitHub →</a>
+              <h5 class="card-title" id="git">🚀 GitHub Portfolio</h5>
+              <p class="card-text" id="git-text">Explore my coding projects and contributions on GitHub.</p>
+              <a class="custom-link" href="https://github.com/raand0" target="_blank" id="vgit">View GitHub →</a>
             </div>
           </div>
         </div>
         <div class="col-md-6 mb-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">🧩 LeetCode Solutions</h5>
-              <p class="card-text">Check out my problem-solving skills and algorithmic thinking through my LeetCode profile and solutions.</p>
-              <a class="custom-link" href="https://leetcode.com/u/rxxand1/" target="_blank">View LeetCode →</a>
+              <h5 class="card-title" id="leet">🧩 LeetCode Solutions</h5>
+              <p class="card-text" id="leet-text">Check out my problem-solving skills and algorithmic thinking through my LeetCode profile and solutions.</p>
+              <a class="custom-link" href="https://leetcode.com/u/rxxand1/" target="_blank" id="vleet">View LeetCode →</a>
             </div>
           </div>
         </div>
@@ -425,12 +470,12 @@
   <!-- Experience Section -->
   <section id="experience" class="section">
     <div class="container">
-      <h2 class="section-title">Technical Skills</h2>
+      <h2 class="section-title" id="skill">Technical Skills</h2>
       <div class="row">
         <div class="col-md-6 mb-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">💻 Programming Languages</h5>
+              <h5 class="card-title" id="plangs">💻 Programming Languages</h5>
               <div class="d-flex flex-wrap">
                 <span class="skill-item">Java</span>
                 <span class="skill-item">PHP</span>
@@ -445,7 +490,7 @@
         <div class="col-md-6 mb-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">🛠️ Tools & Technologies</h5>
+              <h5 class="card-title" id="tt">🛠️ Tools & Technologies</h5>
               <div class="skill-items">
                 <span class="skill-item">Linux (Arch Linux)</span>
                 <span class="skill-item">Windows</span>
@@ -468,11 +513,11 @@
   <!-- Contact Section -->
   <section id="contact" class="section">
     <div class="container">
-      <h2 class="section-title">Get In Touch</h2>
+      <h2 class="section-title" id="get">Get In Touch</h2>
       <div class="row justify-content-center">
         <div class="col-md-8">
           <div class="contact-info">
-            <p class="mb-4">Let's connect and discuss opportunities or collaborations!</p>
+            <p class="mb-4" id="get-text">Let's connect and discuss opportunities or collaborations!</p>
             <div class="contact-item">
               <span>📧</span>
               <a href="mailto:imlrand12@gmail.com" class="custom-link ms-2">imlrand12@gmail.com</a>
@@ -513,6 +558,7 @@
     </div>
   </footer>
 
+  <script src="lang.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
