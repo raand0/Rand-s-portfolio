@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rand Jamal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-dark: #0a0e1a;
+      --secondary-dark: #1a1f2e;
+      --accent-blue: #2563eb;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #7c3aed;
+      --text-light: #f8fafc;
+      --text-gray: #94a3b8;
+      --text-dark: #1e293b;
+      --card-bg: #1e2937;
+      --border-color: #374151;
+      --gradient-primary: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+      --gradient-secondary: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--primary-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(26, 31, 46, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--text-light) !important;
+      text-decoration: none;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--text-gray) !important;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      margin: 0 0.5rem;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--accent-cyan) !important;
+    }
+
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: width 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    #hero {
+      background: var(--gradient-secondary);
+      padding: 8rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+    }
+
+    .tech-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin: 0.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .tech-badge:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Section Styling */
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--gradient-primary);
+      border-radius: 2px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-blue);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-body {
+      padding: 2rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .card-text {
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* About Section */
+    .about-text {
+      font-size: 1.1rem;
+      color: var(--text-gray);
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Skills */
+    .skill-item {
+      color: var(--text-light);
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 0.5rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .skill-item:hover {
+      background: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    /* Links */
+    .custom-link {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .custom-link:hover {
+      color: var(--accent-blue);
+      text-decoration: underline;
+    }
+
+    /* Contact */
+    .contact-info {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1rem 0;
+      color: var(--text-gray);
+    }
+
+    .contact-item i {
+      margin-right: 0.5rem;
+      color: var(--accent-cyan);
+    }
+
+    /* Social Sidebar */
+    .social-sidebar {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-left: none;
+      border-radius: 0 12px 12px 0;
+      padding: 1rem 0.5rem;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .social-sidebar:hover {
+      transform: translateY(-50%) translateX(5px);
+    }
+
+    .social-link {
+      display: block;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      color: var(--text-gray);
+      transition: all 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .social-link:hover {
+      color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.1);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--secondary-dark);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-gray);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .social-sidebar {
+        display: none;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Rand Jamal</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="section">
+    <div class="container">
+      <div class="hero-content text-center">
+        <h1 class="hero-title fade-in">Hey, I'm Rand Jamal</h1>
+        <p class="hero-subtitle fade-in">Backend Developer & IT Student at Sulaimani Polytechnic University</p>
+        <div class="mt-4">
+          <span class="tech-badge">Backend Development</span>
+          <span class="tech-badge">System Architecture</span>
+          <span class="tech-badge">Security</span>
+          <span class="tech-badge">Problem Solving</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-text">
+        <p>I'm a 20-year-old Information Technology student at Sulaimani Polytechnic University with a deep passion for technology and problem-solving. My primary interest lies in backend development, where I focus on building the logic, structure, and functionality behind applications, websites, tools, and systems.</p>
+        <p>I enjoy understanding how things work under the hood and take pride in writing clean, efficient, and secure backend code. While I have a working knowledge of front-end development and design, my strengths are in backend logic and systems architecture. I prioritize implementing reliable functionality and robust security in everything I build.</p>
+        <p>I'm also highly adaptable and a fast learner — if there's something I don't know yet, I'm confident in my ability to pick it up quickly and apply it effectively.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">🚀 GitHub Portfolio</h5>
+              <p class="card-text">Explore my coding projects and contributions on GitHub. See my latest work in backend development, automation, and system tools.</p>
+              <a class="custom-link" href="https://github.com/raand0" target="_blank">View GitHub →</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">🧩 LeetCode Solutions</h5>
+              <p class="card-text">Check out my problem-solving skills and algorithmic thinking through my LeetCode profile and solutions.</p>
+              <a class="custom-link" href="https://leetcode.com/u/rxxand1/" target="_blank">View LeetCode →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">💻 Programming Languages</h5>
+              <div class="d-flex flex-wrap">
+                <span class="skill-item">Java</span>
+                <span class="skill-item">PHP</span>
+                <span class="skill-item">Python</span>
+                <span class="skill-item">C#</span>
+                <span class="skill-item">HTML/CSS</span>
+                <span class="skill-item">MySQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">🛠️ Tools & Technologies</h5>
+              <div class="skill-items">
+                <span class="skill-item">Linux (Arch Linux)</span>
+                <span class="skill-item">Windows</span>
+                <span class="skill-item">Microsoft Office</span>
+                <span class="skill-item">Network Protocols</span>
+                <span class="skill-item">SSH, NAT, VLAN, etc</span>
+                <span class="skill-item">Bootstrap</span>
+                <span class="skill-item">Security</span>
+                <span class="skill-item">Automation</span>
+                <span class="skill-item">REST API</span>
+                <span class="skill-item">Bash/Batch/Config/Json</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="contact-info">
+            <p class="mb-4">Let's connect and discuss opportunities or collaborations!</p>
+            <div class="contact-item">
+              <span>📧</span>
+              <a href="mailto:imlrand12@gmail.com" class="custom-link ms-2">imlrand12@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <span>📱</span>
+              <a href="tel:+9647702485458" class="custom-link ms-2">+964 770 248 5458</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Sidebar -->
+  <div class="social-sidebar">
+    <a href="https://www.facebook.com/rand.0999/" class="social-link" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </a>
+    <a href="https://www.instagram.com/randdr01d" class="social-link" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <a href="https://t.me/raaandd0" class="social-link" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Rand Jamal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
